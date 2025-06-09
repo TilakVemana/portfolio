@@ -1,38 +1,520 @@
-.App {
-  text-align: center;
+/* src/App.css - NEW THEME: "Chromatic Aurora" - *Slightly Subdued Version* */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+:root {
+  --primary-bg-start: #0c131f;
+  --primary-bg-end: #1a2538;
+  --secondary-bg: #1f2937;
+
+  --accent-teal-start: #00a99d;
+  --accent-teal-end: #40e0d0;
+  --accent-magenta-start: #c3247c;
+  --accent-magenta-end: #e754a0;
+
+  /* LIME-GOLD: Now more of a special highlight, less frequently used by default */
+  --accent-lime-gold: #c8e643;
+  --accent-highlight-main: var(--accent-teal-end); /* Primary highlight */
+  --accent-highlight-secondary: var(--accent-magenta-end); /* Secondary highlight */
+
+
+  --text-color-primary: #d1d5db;
+  --text-color-secondary: #9ca3af;
+  --heading-color: #f3f4f6;
+
+  --border-color: #374151;
+  --shadow-color-main: rgba(0, 0, 0, 0.3); /* Slightly softer main shadow */
+  --shadow-color-accent: rgba(0, 0, 0, 0.4); /* Slightly softer accent shadow */
+
+  /* SOFTENED GLOWS */
+  --glow-shadow-teal: 0 0 12px rgba(0, 169, 157, 0.3);
+  --glow-shadow-magenta: 0 0 12px rgba(195, 36, 124, 0.3);
+  --glow-shadow-lime: 0 0 12px rgba(200, 230, 67, 0.25); /* Glow for lime if used */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px; /* Slightly thinner */
+}
+::-webkit-scrollbar-track {
+  background: var(--primary-bg-start);
+}
+::-webkit-scrollbar-thumb {
+  /* Using only two main accents for scrollbar for less visual noise */
+  background: linear-gradient(180deg, var(--accent-teal-start), var(--accent-magenta-start));
+  border-radius: 10px;
+  border: 1.5px solid var(--primary-bg-start);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--accent-teal-end), var(--accent-magenta-end));
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(160deg, var(--primary-bg-start), var(--primary-bg-end) 70%, var(--primary-bg-start));
+  color: var(--text-color-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
   min-height: 100vh;
+}
+
+.App {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 50px 25px;
+}
+
+/* --- Header --- */
+.header {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: left;
+  padding: 30px 25px;
+  margin-bottom: 50px;
+  background-color: rgba(31, 41, 55, 0.5); /* Slightly more transparent */
+  backdrop-filter: blur(8px); /* Slightly less blur */
+  border-radius: 14px;
+  box-shadow: 0 6px 25px var(--shadow-color-accent); /* Softer shadow */
+  border: 1px solid var(--border-color);
+  /* SIMPLIFIED HEADER BORDER - Solid accent */
+  border-bottom: 3px solid var(--accent-teal-start);
+  /* border-image-slice: 1; */
+  /* border-image-source: linear-gradient(to right, var(--accent-teal-start), var(--accent-magenta-start)); */
 }
 
-.App-link {
-  color: #61dafb;
+.profile-photo {
+  width: 250px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-teal-start); /* Kept simple */
+  margin-right: 30px;
+  box-shadow: 0 4px 10px var(--shadow-color-main);
+  flex-shrink: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.header-content {
+  flex-grow: 1;
+}
+
+.header h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 2.4em;
+  color: var(--heading-color);
+  margin-top: 0;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.header .contact-info {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  color: var(--text-color-secondary);
+}
+.header .contact-info p {
+  margin: 4px 0;
+}
+.header .contact-info a {
+  color: var(--accent-highlight-main); /* Use main highlight */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+.header .contact-info a:hover {
+  color: var(--accent-lime-gold); /* Lime-gold for hover - special highlight */
+  text-shadow: 0 0 6px var(--accent-lime-gold);
+}
+
+.resume-download-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  /* Simpler background for button, still uses accents */
+  background: linear-gradient(135deg, var(--accent-teal-start) 0%, var(--accent-magenta-start) 100%);
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15); /* Softer shadow */
+}
+
+.resume-download-btn:hover,
+.resume-download-btn:focus {
+  color: var(--heading-color);
+  background: linear-gradient(135deg, var(--accent-teal-end) 0%, var(--accent-magenta-end) 100%);
+  transform: translateY(-2px) scale(1.02); /* Slightly less movement */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25), var(--glow-shadow-teal); /* Only one glow on hover */
+  outline: none;
+}
+
+
+/* --- Section --- */
+.section {
+  background-color: var(--secondary-bg);
+  padding: 30px 35px;
+  margin-bottom: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px var(--shadow-color-main); /* Softer shadow */
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease; /* Faster, smoother transition */
+}
+
+/* SIMPLIFIED Section Side Borders - Solid colors */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px; /* Slightly thinner */
+  transition: transform 0.3s ease-out;
+}
+.section:nth-of-type(odd)::before {
+  left: 0;
+  background: var(--accent-teal-start); /* Solid color */
+}
+.section:nth-of-type(even)::before {
+  left: 0;
+  background: var(--accent-magenta-start); /* Solid color */
+}
+
+.section:hover {
+    transform: translateY(-3px); /* Less movement */
+    box-shadow: 0 8px 28px var(--shadow-color-accent); /* Softer hover shadow */
+}
+/* Only apply glow to the matching border color on hover */
+.section:nth-of-type(odd):hover { box-shadow: 0 8px 28px var(--shadow-color-accent), var(--glow-shadow-teal); }
+.section:nth-of-type(even):hover { box-shadow: 0 8px 28px var(--shadow-color-accent), var(--glow-shadow-magenta); }
+
+
+.section h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.6em; /* Slightly smaller */
+  color: var(--heading-color);
+  margin-top: 0;
+  margin-bottom: 22px; /* Adjusted */
+  padding-bottom: 10px; /* Adjusted */
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  display: inline-block;
+}
+
+/* Section title underline still uses gradient - good place for it */
+.section h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0;
+  height: 2.5px; /* Slightly thinner */
+  border-radius: 1px;
+  transition: width 0.3s ease-out;
+}
+.section:nth-of-type(odd) h2::after { background: linear-gradient(to right, var(--accent-teal-start), var(--accent-teal-end)); }
+.section:nth-of-type(even) h2::after { background: linear-gradient(to right, var(--accent-magenta-start), var(--accent-magenta-end)); }
+
+.section:hover h2::after {
+  width: 60px; /* Slightly smaller */
+}
+
+.section p, .section ul {
+  font-size: 0.98rem; /* Slightly smaller for denser content feel */
+  color: var(--text-color-primary);
+  margin-bottom: 14px;
+}
+.section ul {
+  list-style: none;
+  padding-left: 0;
+}
+.section ul li {
+  padding-left: 22px; /* Adjusted */
+  position: relative;
+  margin-bottom: 7px;
+}
+
+/* SIMPLIFIED List bullets - Consistent color based on section accent */
+.section ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0px;
+  top: 0px; /* Adjusted */
+  font-size: 1.3em;
+  font-weight: 700;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.section:nth-of-type(odd) ul li::before { color: var(--accent-teal-start); }
+.section:nth-of-type(even) ul li::before { color: var(--accent-magenta-start); }
+
+.section ul li:hover::before {
+    transform: scale(1.1);
+    /* Using lime-gold as a special hover highlight for bullets */
+    color: var(--accent-lime-gold);
+}
+
+/* --- Education Specific --- */
+.education-item {
+  margin-bottom: 18px;
+  padding: 14px;
+  background-color: var(--primary-bg-end);
+  border-radius: 8px;
+  /* Lime-gold is a good specific highlight here */
+  border-left: 3px solid var(--accent-lime-gold);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.education-item:hover {
+    background-color: var(--secondary-bg);
+    box-shadow: 0 0 8px rgba(200, 230, 67, 0.15); /* Softer glow for lime */
+}
+.education-item h3 {
+  color: var(--heading-color);
+  margin-bottom: 4px;
+  font-size: 1.05rem;
+}
+.education-item .degree {
+  color: var(--text-color-secondary);
+  margin-bottom: 2px;
+  font-size: 0.9rem;
+}
+.education-item .date {
+  font-size: 0.8rem;
+  color: var(--accent-lime-gold); /* Good use of lime-gold */
+  font-weight: 500;
+}
+
+/* --- Skills --- */
+.skill-category h4 {
+  font-weight: 500;
+  margin-bottom: 12px;
+  font-size: 1rem; /* Slightly smaller */
+  text-transform: uppercase;
+  letter-spacing: 0.8px; /* Less spacing */
+  display: inline-block;
+}
+/* Skill category titles are good places for accent gradients */
+.skill-category:nth-of-type(3n+1) h4 { background: -webkit-linear-gradient(45deg, var(--accent-teal-start), var(--accent-teal-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+.skill-category:nth-of-type(3n+2) h4 { background: -webkit-linear-gradient(45deg, var(--accent-magenta-start), var(--accent-magenta-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+.skill-category:nth-of-type(3n+3) h4 { color: var(--accent-highlight-main); /* Solid for variety, less intense than lime-gold */ }
+
+
+.skill-badge {
+  padding: 7px 14px; /* Slightly smaller */
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: 'Roboto Mono', monospace;
+  border: 1.5px solid;
+  transition: all 0.2s ease; /* Faster transition */
+  cursor: default;
+  border-image-slice: 1;
+}
+/* Skill badges: simplified - border color matches text color */
+.skills-list li:nth-child(3n+1) .skill-badge { border-color: var(--accent-teal-start); color: var(--accent-teal-end); border-image: none; }
+.skills-list li:nth-child(3n+2) .skill-badge { border-color: var(--accent-magenta-start); color: var(--accent-magenta-end); border-image: none;}
+.skills-list li:nth-child(3n+3) .skill-badge { border-color: var(--accent-highlight-main); color: var(--accent-highlight-main); border-image: none; } /* Using a main highlight */
+
+.skill-badge:hover {
+  transform: translateY(-1px) scale(1.01); /* Very subtle hover */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+/* Solid fill on hover is a good effect */
+.skills-list li:nth-child(3n+1) .skill-badge:hover { background-color: var(--accent-teal-start); color: var(--primary-bg-start); }
+.skills-list li:nth-child(3n+2) .skill-badge:hover { background-color: var(--accent-magenta-start); color: var(--primary-bg-start); }
+.skills-list li:nth-child(3n+3) .skill-badge:hover { background-color: var(--accent-highlight-main); color: var(--primary-bg-start); }
+
+
+/* --- Project Card --- */
+.project-card {
+  background-color: var(--primary-bg-end);
+  border: 1px solid var(--border-color);
+  padding: 22px; /* Adjusted */
+  margin-bottom: 25px;
+  border-radius: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+/* Removed ::after glow from project card for less visual noise */
+/* .project-card::after { ... } */
+
+/* Project card top border is a good distinct accent */
+.project-card:nth-child(3n+1) { border-top: 3px solid var(--accent-teal-start); }
+.project-card:nth-child(3n+2) { border-top: 3px solid var(--accent-magenta-start); }
+.project-card:nth-child(3n+3) { border-top: 3px solid var(--accent-lime-gold); } /* Lime-gold for one project type is fine */
+
+
+.project-card:hover {
+  transform: translateY(-4px); /* Less movement */
+  box-shadow: 0 8px 25px var(--shadow-color-accent);
+}
+/* Glows on project cards on hover - keep if you like, or remove for less dominance */
+.project-card:nth-child(3n+1):hover { box-shadow: 0 8px 25px var(--shadow-color-accent), var(--glow-shadow-teal); }
+.project-card:nth-child(3n+2):hover { box-shadow: 0 8px 25px var(--shadow-color-accent), var(--glow-shadow-magenta); }
+.project-card:nth-child(3n+3):hover { box-shadow: 0 8px 25px var(--shadow-color-accent), var(--glow-shadow-lime); }
+
+
+.project-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.project-card .technologies {
+  font-size: 0.75rem;
+  margin-bottom: 10px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+/* Technologies text color based on project card accent - good subtle link */
+.project-card:nth-child(3n+1) .technologies { color: var(--accent-teal-end); }
+.project-card:nth-child(3n+2) .technologies { color: var(--accent-magenta-end); }
+.project-card:nth-child(3n+3) .technologies { color: var(--accent-lime-gold); }
+
+/* Project card list bullets follow section style (consistent color) */
+.project-card ul li::before { /* Inherits section styling if projects are inside a section, or needs explicit styling */
+  /* Example: Use the project's top border color */
+}
+.project-card:nth-child(3n+1) ul li::before { color: var(--accent-teal-start); }
+.project-card:nth-child(3n+2) ul li::before { color: var(--accent-magenta-start); }
+.project-card:nth-child(3n+3) ul li::before { color: var(--accent-lime-gold); }
+
+
+/* --- Soft Skills --- */
+.soft-skill-item {
+  background-color: var(--secondary-bg);
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--text-color-secondary);
+  transition: all 0.2s ease;
+}
+/* Soft skill hover uses simpler effect */
+.soft-skill-item:nth-child(3n+1):hover { color: var(--accent-teal-start); border-color: var(--accent-teal-start); box-shadow: 0 0 8px rgba(0,169,157,0.15);}
+.soft-skill-item:nth-child(3n+2):hover { color: var(--accent-magenta-start); border-color: var(--accent-magenta-start); box-shadow: 0 0 8px rgba(195,36,124,0.15);}
+.soft-skill-item:nth-child(3n+3):hover { color: var(--accent-lime-gold); border-color: var(--accent-lime-gold); box-shadow: 0 0 8px rgba(200,230,67,0.15);}
+
+
+/* --- Certifications --- */
+/* Certification item bullet still good as is */
+.certification-item::before {
+    content: "✦";
+    position: absolute;
+    left: -20px; /* Keep as is or adjust if text size changed */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1em;
+    opacity: 0.7; /* Slightly more subtle */
+    transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+.certification-item:nth-of-type(3n+1)::before { background: -webkit-linear-gradient(var(--accent-teal-start), var(--accent-teal-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.certification-item:nth-of-type(3n+2)::before { background: -webkit-linear-gradient(var(--accent-magenta-start), var(--accent-magenta-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.certification-item:nth-of-type(3n+3)::before { color: var(--accent-lime-gold); } /* Lime gold as a highlight here is okay */
+
+.certification-item:hover::before {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.15) rotate(5deg); /* Less rotation */
+}
+
+/* --- Footer --- */
+.footer { text-align: center; padding: 30px 0 40px; color: var(--text-color-secondary); font-size: 0.9em;}
+.footer a {
+    font-weight: 500; /* Slightly less bold */
+    text-decoration: none;
+    transition: text-shadow 0.2s ease;
+}
+/* Footer links are a good place for subtle accents */
+.footer a:nth-of-type(odd) { background: -webkit-linear-gradient(45deg, var(--accent-teal-end), var(--accent-magenta-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.footer a:nth-of-type(even) { background: -webkit-linear-gradient(45deg, var(--accent-magenta-start), var(--accent-highlight-main)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+.footer a:hover {
+   text-shadow: 0 0 4px var(--accent-lime-gold); /* Lime gold glow on hover is fine */
+}
+
+
+/* --- Responsive Design --- */
+/* Most responsive styles should adapt, but review padding/font sizes if things feel too cramped or too dominant after changes */
+@media (max-width: 768px) {
+  .App { padding: 40px 15px; }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 15px;
   }
-  to {
-    transform: rotate(360deg);
+  .profile-photo {
+    width: 100px; /* Adjusted */
+    height: 100px; /* Adjusted */
+    margin-right: 0;
+    margin-bottom: 18px;
   }
+  .header-content {
+    text-align: center;
+  }
+  .header h1 { font-size: 2.1em; margin-bottom: 8px;}
+  .header .contact-info { margin-bottom: 18px; }
+  .resume-download-btn { padding: 9px 20px; font-size: 0.85rem;}
+
+  .section { padding: 25px 20px; }
+  .section h2 { font-size: 1.45em; }
+  .project-card h3 { font-size: 1.1rem; }
+  .section::before { width: 3px; }
+}
+
+@media (max-width: 480px) {
+  .App { padding: 30px 10px; }
+  .header { padding: 20px 10px 22px; border-radius: 12px; }
+  .profile-photo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 1.8em; }
+  .resume-download-btn { padding: 8px 18px; font-size: 0.8rem;}
+
+  .section { padding: 20px 15px; border-radius: 10px; }
+  .section h2 { font-size: 1.3em; margin-bottom: 18px; padding-bottom: 8px; }
+  .section:hover h2::after { width: 45px; }
+  .skill-badge { padding: 6px 12px; font-size: 0.75rem; }
+  .project-card { padding: 18px 12px; }
+  .project-card:nth-child(3n+1),
+  .project-card:nth-child(3n+2),
+  .project-card:nth-child(3n+3) { border-top-width: 2.5px; }
+  .certification-item::before { font-size: 0.85em; left: -18px; }
+}
+/* --- Styles for the new resume button container --- */
+.resume-actions {
+  display: flex;         /* This makes the buttons sit side-by-side */
+  align-items: center;   /* Vertically aligns them if they have different heights */
+  gap: 1.2rem;           /* Creates a nice space between the two buttons */
+  margin-top: 25px;      /* Adds space above the buttons */
+}
+/* --- Style for the new "View Resume" (Secondary/Outline) button --- */
+.resume-view-btn {
+  display: inline-block;
+  padding: 8px 23px; /* Slightly adjusted padding to align with the border */
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px; /* Same pill shape as the download button */
+  transition: all 0.25s ease-in-out; /* Same transition for consistency */
+
+  /* --- The Outline Style --- */
+  background: transparent; /* No background fill */
+  border: 2px solid var(--accent-teal-start); /* A solid border using the primary accent */
+  color: var(--accent-teal-end); /* Text color matches the brighter accent */
+}
+
+.resume-view-btn:hover,
+.resume-view-btn:focus {
+  /* On hover, we fill the button for a satisfying interaction */
+  background: var(--accent-teal-start);
+  color: var(--primary-bg-start); /* Text becomes dark to contrast with the new background */
+  
+  /* Use the same transform and glow effect for a cohesive feel */
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25), var(--glow-shadow-teal);
+  outline: none;
 }
