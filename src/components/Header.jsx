@@ -1,8 +1,7 @@
+// src/components/Header.jsx
 import React from 'react';
-// Make sure you have a CSS file imported for styling, e.g., './Header.css'
 
 const Header = ({ name, location, phone, email, linkedIn, photoUrl, resumeFileUrl }) => {
-  // This is a great way to create a clean filename for the download!
   const resumeFilename = `${name.replace(/\s+/g, '_')}_Resume.pdf`;
 
   return (
@@ -24,20 +23,17 @@ const Header = ({ name, location, phone, email, linkedIn, photoUrl, resumeFileUr
         </div>
 
         
-        {/* We only show the buttons if a resume URL is provided */}
         {resumeFileUrl && (
           <div className="resume-actions">
-            {/* "View Resume" button - opens in a new tab */}
             <a
               href={resumeFileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="resume-view-btn" // A new class for distinct styling
+              className="resume-view-btn" 
             >
               View Resume
             </a>
 
-            {/* "Download Resume" button - was already here */}
             <a
               href={resumeFileUrl}
               download={resumeFilename}

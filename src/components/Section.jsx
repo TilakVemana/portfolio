@@ -1,4 +1,4 @@
-// src/components/Section.js
+// src/components/Section.jsx
 import React from 'react';
 
 const Section = ({ title, children }) => {

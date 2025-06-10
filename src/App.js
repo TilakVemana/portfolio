@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
@@ -6,15 +5,14 @@ import Section from './components/Section';
 import ProjectCard from './components/ProjectCard';
 import SkillBadge from './components/SkillBadge';
 
-// Your Resume Data
 const resumeData = {
   name: 'SAI RATNA TILAK VEMANA',
   location: 'Rajahmundry, Andhra Pradesh',
   phone: '+918367270941',
   email: 'tilak2042000@gmail.com',
-  linkedIn: 'https://www.linkedin.com/in/sai-ratna-tilak-vemana-596939202', // << PLEASE UPDATE THIS TO YOUR ACTUAL LINKEDIN URL
+  linkedIn: 'https://www.linkedin.com/in/sai-ratna-tilak-vemana-596939202', 
   photoUrl:process.env.PUBLIC_URL + '/profile.jpg' ,
-  resumeFileUrl: process.env.PUBLIC_URL + '/resume.pdf', // << PLACE your resume PDF in the 'public' folder and name it 'resume.pdf' or update path
+  resumeFileUrl: process.env.PUBLIC_URL + '/resume.pdf',
   professionalSummary:
     'Recent B.Tech graduate with expertise in web development (HTML, CSS, JavaScript, Bootstrap) and cloud computing (AWS Certified Cloud Practitioner). Proficient in Python and data analysis. Seeking to leverage technical skills to drive innovation and growth. Eager to apply knowledge and skills in a dynamic environment and contribute to cutting-edge projects. Strong foundation in problem-solving and teamwork.',
   education: [
@@ -156,8 +154,6 @@ function App() {
 
       <footer className="footer">
         <p>© {new Date().getFullYear()} {resumeData.name}. All rights reserved.</p>
-        {/* Optional: You can add a link to the source code if you host it on GitHub */}
-        {/* <p><a href="your-github-repo-link" target="_blank" rel="noopener noreferrer">View Source on GitHub</a></p> */}
       </footer>
     </div>
   );

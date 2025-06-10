@@ -1,4 +1,4 @@
-// src/components/SkillBadge.js
+// src/components/SkillBadge.jsx
 import React from 'react';
 
 const SkillBadge = ({ skill }) => {

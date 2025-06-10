@@ -1,4 +1,4 @@
-// src/components/ProjectCard.js
+// src/components/ProjectCard.jsx
 import React from 'react';
 
 const ProjectCard = ({ title, technologies, descriptionPoints }) => {
