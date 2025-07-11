@@ -18,7 +18,7 @@ const resumeData = {
   education: [
     {
       institution: 'Pragati Engineering College | Surampalem, Kakinada',
-      degree: 'Bachelor of Technology in Electrical and Electronics Engineering',
+      degree: 'Bachelor of Technology in Electronics and Communication Engineering',
       date: 'July 2022',
     },
   ],
